@@ -1,8 +1,8 @@
 FROM debian:bullseye
 
 # Install nginx and openssl
-RUN apt-get update \
-    && apt-get install -y nginx openssl
+RUN apt-get update
+RUN apt-get install -y nginx openssl
 
 # SSL certificate
 RUN openssl req -x509 -nodes \
