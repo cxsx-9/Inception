@@ -1,18 +1,18 @@
 #!/bin/bash
 
-service mariadb start
-
 export DB_NAME=wordpress
 export DB_USER=dbuser
 export DB_PASSWD=db1234
-
 export DB_ROOT_USER=root
 export DB_ROOT_PASSWD=root1234
 
-# if database not exists
+service mariadb start
+
+# If the database directory does not exist
 if [ ! -d "/var/lib/mysql/$DB_NAME" ]
 then
 mysql_secure_installation << EOF
+
 Y
 Y
 $DB_ROOT_PASSWD
@@ -28,5 +28,7 @@ echo "CREATE USER IF NOT EXISTS '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWD';" | my
 echo "GRANT ALL ON $DB_NAME.* TO '$DB_USER'@'%' IDENTIFIED BY '$DB_PASSWD';" | mysql
 echo "FLUSH PRIVILEGES;" | mysql
 fi
+
+service mariadb stop
 
 echo "$@"
