@@ -9,15 +9,7 @@ stop:
 start:
 	@docker compose -f ./srcs/docker-compose.yml start
 
-clear:
-	@if [ $$(docker ps -q | wc -l) -gt 0 ]; then \
-		docker stop $$(docker ps -q); \
-		docker rm $$(docker ps -aq); \
-	else \
-		echo ": No container is running"; \
-	fi
-
-clean: clear down
+clean: down
 	@if [ $$(docker images -q | wc -l) -gt 0 ]; then \
 		docker image rm -f $$(docker images -qa); \
 	fi

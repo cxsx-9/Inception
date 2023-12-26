@@ -27,8 +27,6 @@ skip-external-locking
 
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-
-# -> new bind-address because localhost is already use.
 bind-address            = 0.0.0.0
 
 #

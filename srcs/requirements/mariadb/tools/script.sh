@@ -31,4 +31,4 @@ fi
 
 service mariadb stop
 
-echo "$@"
+exec "$@"

@@ -28,8 +28,6 @@ services:
     build:
       context: requirements/mariadb/
       dockerfile: Dockerfile
-    environment:
-      - DOCKER_BUILDKIT=0
     env_file:
       - .env
     volumes:
