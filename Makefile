@@ -1,7 +1,7 @@
 all: up
 
 up:
-	@docker compose -f ./srcs/docker-compose.yml up -d --build
+	@docker compose -f ./srcs/docker-compose.yml up -d
 down:
 	@docker compose -f ./srcs/docker-compose.yml down
 stop:
@@ -10,22 +10,22 @@ start:
 	@docker compose -f ./srcs/docker-compose.yml start
 
 clear:
-	@if [ ! -z $$(docker ps -aq) ]; then \
-		docker stop $$(docker ps -aq); \
+	@if [ $$(docker ps -q | wc -l) -gt 0 ]; then \
+		docker stop $$(docker ps -q); \
 		docker rm $$(docker ps -aq); \
 	else \
 		echo ": No container is running"; \
 	fi
 
 clean: clear down
-	@if [ ! -z $$(docker images -aq) ]; then \
+	@if [ $$(docker images -q | wc -l) -gt 0 ]; then \
 		docker image rm -f $$(docker images -qa); \
 	fi
-	@if [ ! -z $$(docker volume ls -q) ]; then\ 
-	docker volume rm $$(docker volume ls -q); \
+	@if [ $$(docker volume ls -q | wc -l) -gt 0 ]; then \
+		docker volume rm $$(docker volume ls -q); \
 	fi
 
-fclean: clear
+fclean: clean
 	docker system prune -af
 	docker volume prune -f
 
