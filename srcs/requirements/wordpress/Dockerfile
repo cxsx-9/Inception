@@ -3,7 +3,6 @@ FROM debian:bullseye
 # Install php
 RUN apt-get update \
     && apt-get install -y wget php php-fpm php-mysql
-    # && rm -rf /var/lib/apt/lists/*
 
 # Install wordpress (wp-cli)
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
