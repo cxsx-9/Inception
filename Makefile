@@ -1,7 +1,7 @@
 all: up
 
 up:
-	@docker compose -f ./srcs/docker-compose.yml up -d
+	@docker compose -f ./srcs/docker-compose.yml up -d --build
 down:
 	@docker compose -f ./srcs/docker-compose.yml down
 stop:
@@ -37,4 +37,4 @@ fclean: clean
 
 re:	fclean up
 
-.PHONY: all up down stop start clean fclean re
+.PHONY: all up down stop start clean clear fclean re

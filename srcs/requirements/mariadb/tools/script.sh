@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# export DB_NAME=wordpress
-# export DB_USER=dbuser
-# export DB_PASSWD=db1234
-# export DB_ROOT_USER=root
-# export DB_ROOT_PASSWD=root1234
-
 service mariadb start
 
 # If the database directory does not exist
